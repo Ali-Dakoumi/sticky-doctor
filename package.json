@@ -7,7 +7,11 @@
   "main": "./dist/index.cjs",
   "module": "./dist/index.js",
   "types": "./dist/index.d.ts",
-  "files": ["dist", "README.md", "LICENSE"],
+  "files": [
+    "dist",
+    "README.md",
+    "LICENSE"
+  ],
   "exports": {
     ".": {
       "types": "./dist/index.d.ts",
@@ -19,13 +23,21 @@
     "build": "tsup",
     "test": "vitest run",
     "test:watch": "vitest",
-    "typecheck": "tsc --noEmit"
+    "typecheck": "tsc --noEmit",
+    "size": "size-limit"
   },
+  "size-limit": [
+      {
+        "path": "dist/index.js",
+        "limit": "10 kB"
+      }
+    ],
   "peerDependencies": {
     "react": ">=18",
     "react-dom": ">=18"
   },
   "devDependencies": {
+    "@size-limit/preset-small-lib": "^13.0.3",
     "@testing-library/jest-dom": "^7.0.1",
     "@testing-library/react": "^16.3.2",
     "@types/jsdom": "^30.0.0",
@@ -34,6 +46,7 @@
     "jsdom": "^30.0.1",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
+    "size-limit": "^13.0.3",
     "tsup": "^8.5.1",
     "typescript": "^5.7.3",
     "vitest": "^4.1.11"
